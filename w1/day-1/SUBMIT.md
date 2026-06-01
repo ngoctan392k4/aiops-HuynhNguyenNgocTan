@@ -24,3 +24,5 @@ Detector 2: Sử dụng Isolation Forest để xử lý dữ liệu với các f
 ![knowledge Check 1](/w1/day-1/images/kc-1.jpg)
 ![knowledge Check 2](/w1/day-1/images/kc-2.jpg)
 ![knowledge Check 3](/w1/day-1/images/kc-3.jpg)
+![knowledge Check 4](/w1/day-1/images/kc-4.jpg)
+![knowledge Check 5](/w1/day-1/images/kc-5.jpg)
