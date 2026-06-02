@@ -11,6 +11,11 @@
 ## Tuning log
 ![alt text](/w1/day-2/images/tuning.png)
 
+# Chạy script trên 2 dataset
+![alt text](/w1/day-2/images/dataset2.png)
+
+- Dataset Spark có nhiều templates hơn (Spark có 27 templates trong khi HDFS có 17 templates)
+
 # Reflection: Drain3 parse tốt không, template nào cho insight, metric vs log khác gì
 ## Drain3 parse tốt không
 - Tốc độ xử lý thời gian thực cực nhanh, tốn ít tài nguyên RAM.
