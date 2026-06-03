@@ -1,5 +1,5 @@
 # Screenshot architecture diagram
-![Architecture](/w1/d3/images/architecture.png)
+![Architecture](/w1/d3/architecture.png)
 
 
 # Bảng cost estimate (copy từ output cost_model.py)
@@ -35,3 +35,9 @@ Introduce Kafka cluster between the application microservices and PostgreSQL. Th
 
 
 # Reflection: nếu bạn được hire làm Platform Engineer cho startup 50-service vừa raise Series A, bạn sẽ recommend build hay buy? Tại sao?
+
+Sau khi vừa raise Series A, Startup nên buy thay vì tự build
+
+Sau Series A, startup cần tập trung 100% nguồn lực kỹ thuật để chứng minh sản phẩm đáp ứng được nhu cầu thị trường, hoàn thiện tính năng core của 50 services nhằm đáp ứng được người tiêu dùng và chiếm được thị phần tiêu dùng. Nếu chọn tự Build, đội ngũ phần mềm sẽ phải tốn từ 3-6 tháng để có được first value. Việc mua SaaS giúp hệ thống có ngay khả năng observability chỉ sau vài giờ tích hợp và có được first value chỉ sau 1-2 tuần.
+
+Về khó khăn trong lúc vận hành: Sau giai đoạn raise Series A, startup chưa có đội ngũ Platform đủ kinh nghiệm để vận hành toàn bộ stack vì để tự build thì cần 2-3 SRE. Việc mua SaaS giúp giải gánh nặng vận hành. 
