@@ -1,0 +1,57 @@
+{
+  "clusters_analyzed": 2,
+  "results": [
+    {
+      "cluster_id": "c-000-000",
+      "graph_top3": [
+        [
+          "payment-svc",
+          1.0
+        ],
+        [
+          "checkout-svc",
+          0.9391
+        ],
+        [
+          "cart-svc",
+          0.9151
+        ]
+      ],
+      "root_cause": "payment-svc",
+      "class": "connection_pool_exhaustion",
+      "confidence": 0.94,
+      "actions": [
+        "Rollback to v3.1. Scale pool 50 → 100 cushion. Add pool monitor alert > 80%."
+      ],
+      "reasoning": "Graph+temporal scorer xếp payment-svc cao nhất trong cluster c-000-000 vì service này có combined score 1.00. Retrieval tìm incident tương tự nhất INC-2025-11-08 với similarity 0.80, nên class/actions được lấy theo kNN top-1.",
+      "similar_incidents": [
+        "INC-2025-11-08",
+        "INC-2026-03-20",
+        "INC-2025-08-17"
+      ],
+      "method": "graph+retrieval-knn"
+    },
+    {
+      "cluster_id": "c-000-001",
+      "graph_top3": [
+        [
+          "recommender-svc",
+          0.85
+        ]
+      ],
+      "root_cause": "recommender-svc",
+      "class": "memory_leak",
+      "confidence": 0.775,
+      "actions": [
+        "Patch leak; rollback v3.0 trong khi chờ. Add gc.collect() trong handler."
+      ],
+      "reasoning": "Graph+temporal scorer xếp recommender-svc cao nhất trong cluster c-000-001 vì service này có combined score 0.85. Retrieval tìm incident tương tự nhất INC-2025-08-02 với similarity 0.60, nên class/actions được lấy theo kNN top-1.",
+      "similar_incidents": [
+        "INC-2025-08-02",
+        "INC-2025-10-28",
+        "INC-2026-03-07"
+      ],
+      "method": "graph+retrieval-knn"
+    }
+  ]
+}
