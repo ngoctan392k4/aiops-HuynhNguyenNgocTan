@@ -6,10 +6,11 @@
     - Class là `connection_pool_exhaustion`
     - Similar incidents gồm `INC-2025-11-08`, `INC-2026-03-20`, và `INC-2025-08-17` 
 - Dựa theo các incident history gần nhất, root cause phù hợp nhất là `payment-svc` vì các service trong cluster hiện tại có mức overlap cao với các incidents cũ, đặc biệt `payment-svc` từng xuất hiện như root cause trong các incident tương tự. Retrieval score của top-1 similar incident là `0.8`, cho thấy pattern hiện tại khá giống với lỗi connection pool trước đây.
+- Dựa theo Graph Traversal RCA, `payment-svc` có pagerank score cao nhất dựa theo service graph và temporal score
 
 # Confidence — có dám deploy auto-remediation dựa trên output này không?
 
-- Với confidence hiện tại, em chưa dám deploy auto-remediation hoàn toàn tự động dựa trên output này. Action như tăng connection pool từ `50` lên `100` có thể được thực hiện nếu có monitor, nhưng rollback version vẫn nên cần SRE xác nhận. Do đó, auto-remediate sẽ được deploy khi confidence từ `0.9` trở lên và class với action thật sự trùng khớp với incident lịch sử.
+- Với confidence hiện tại, em chưa dám deploy auto-remediation hoàn toàn tự động dựa trên output này. Action như tăng connection pool từ `50` lên `100` có thể được thực hiện nếu có monitor, nhưng rollback version vẫn nên cần SRE xác nhận. Do đó, auto-remediate sẽ được deploy khi confidence retrieve top-3 similar (keyword similarity) từ `0.9` trở lên và class với action thật sự trùng khớp với incident lịch sử.
 
 # 1 case mà bạn không chắc — vì sao
 - Case em không chắc là cluster `c-000-001`. Cluster  `c-000-001`y được dự đoán là `memory_leak`, nhưng top 3 similar incidents đều có retrieval score chỉ khoảng `0.6`. Ngoài ra, trong top 3 similar incident thì chỉ có 1 incident là memory leak trong khi 2 cái còn lại là other. Do vậy, em nghĩ cluster này nên được xem thủ công thay vì automation
