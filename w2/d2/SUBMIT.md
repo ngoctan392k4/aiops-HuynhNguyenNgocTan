@@ -9,7 +9,7 @@
 - Pipeline sẽ retrieve top 3 similar incidents bằng keyword similarity, sau đó lấy class và actions từ top 1 incident giống nhất. 
 - Khi chạy thực tế:
     - Cluster `c-000-000` trả về class `connection_pool_exhaustion` với retrieval score `0.8`, action là `Rollback to v3.1. Scale pool 50 → 100 cushion. Add pool monitor alert > 80%.`. 
-    - Cluster `c-000-001` trả về class `memory_leak` với retrieval score `0.6`, action là `Patch leak; rollback v3.0 trong khi chờ. Add gc.collect() trong handler. 
+    - Cluster `c-000-001` trả về class `memory_leak` với retrieval score `0.6`, action là `Patch leak; rollback v3.0 trong khi chờ. Add gc.collect() trong handler`. 
 - Variant này đơn giản, dễ thực hiện, không cần API key, deterministic và dễ debug. Tuy nhiên, trade-off là nó phụ thuộc vào độ chính xác của incident history. Nếu incident history thiếu hoặc pattern của incident hiện tại mới hoàn toàn, classifier có thể trả về class với độ tin cậy thấp.
 
 # Đọc bảng Industry landscape (§6) — pipeline bạn xây gần product nào nhất? Trong domain GeekShop (e-commerce, alert volume cao, service map tương đối ổn định), lựa chọn đó hợp lý hay nên đổi?
