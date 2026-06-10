@@ -19,11 +19,11 @@
       ],
       "root_cause": "payment-svc",
       "class": "connection_pool_exhaustion",
-      "confidence": 0.94,
+      "confidence": 1.0,
       "actions": [
         "Rollback to v3.1. Scale pool 50 → 100 cushion. Add pool monitor alert > 80%."
       ],
-      "reasoning": "Graph+temporal scorer xếp payment-svc cao nhất trong cluster c-000-000 vì service này có combined score 1.00. Retrieval tìm incident tương tự nhất INC-2025-11-08 với similarity 0.80, nên class/actions được lấy theo kNN top-1.",
+      "reasoning": "Graph+temporal scorer xếp payment-svc cao nhất trong cluster c-000-000 với root-cause confidence theo service graph + temporal là 1.00. Retrieval tìm incident tương tự nhất là INC-2025-11-08 với similarity 0.80; class/actions được lấy từ top-1 similar incident theo kNN-style.",
       "similar_incidents": [
         "INC-2025-11-08",
         "INC-2026-03-20",
@@ -41,11 +41,11 @@
       ],
       "root_cause": "recommender-svc",
       "class": "memory_leak",
-      "confidence": 0.775,
+      "confidence": 0.85,
       "actions": [
         "Patch leak; rollback v3.0 trong khi chờ. Add gc.collect() trong handler."
       ],
-      "reasoning": "Graph+temporal scorer xếp recommender-svc cao nhất trong cluster c-000-001 vì service này có combined score 0.85. Retrieval tìm incident tương tự nhất INC-2025-08-02 với similarity 0.60, nên class/actions được lấy theo kNN top-1.",
+      "reasoning": "Graph+temporal scorer xếp recommender-svc cao nhất trong cluster c-000-001 với root-cause confidence theo service graph + temporal là 0.85. Retrieval tìm incident tương tự nhất là INC-2025-08-02 với similarity 0.60; class/actions được lấy từ top-1 similar incident theo kNN-style.",
       "similar_incidents": [
         "INC-2025-08-02",
         "INC-2025-10-28",
