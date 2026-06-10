@@ -1,6 +1,6 @@
 # Confidence của top-1 trong cluster lớn nhất bạn xử lý là bao nhiêu? Nếu phải set threshold để auto-rollback (không cần SRE confirm), bạn pick số nào? Lý do?
 
-- Top-1 trong cluster lớn nhất mà em đã xử lý là `c-000-000` với retrieval score là `0.8`, class được dự đoán là `connection_pool_exhaustion`, và root cause trong incident tương tự là `payment-svc`. 
+- Top-1 trong cluster lớn nhất mà em đã xử lý là `c-000-000` với retrieval score là `0.8` và confidence là `1.0`, class được dự đoán là `connection_pool_exhaustion`, và root cause trong incident tương tự là `payment-svc`. 
 - Nếu phải set threshold để auto-rollback (không cần SRE confirm), em sẽ chọn threshold khoảng `0.9` vì mặc dù `0.8` đã đủ tốt để gợi ý hướng xử lý, nhưng chưa đủ an toàn để auto-rollback do rollback có thể ảnh hưởng đến môi trường production. Score từ `0.9` trở lên cho thấy incident hiện tại rất giống incident trong lịch sử, class và action đã được chứng minh hiệu quả trong history.
 
 # Variant bạn chọn cho classifier (A rule-based / B free LLM / C paid LLM). Chạy thực tế ra sao? Trade-off với variant bạn không chọn?
